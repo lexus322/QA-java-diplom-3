@@ -63,7 +63,7 @@ public class User {
     }
 
     @Step("Получение токена для использования в API")
-    private String getUserToken(){
+    private String getUserToken() {
         String accessToken = "";
         ValidatableResponse response = given()
                 .spec(getBaseSpec())
@@ -71,17 +71,18 @@ public class User {
                 .when()
                 .post(LOGIN_API + "login")
                 .then();
-        if(response.extract().statusCode() == 200) {
+        if (response.extract().statusCode() == 200) {
             accessToken = response.extract().path("accessToken");
         }
         return accessToken;
     }
+
     @Step("Удаление созданого пользователя при помощи API")
-    public void deleteUser(){
+    public void deleteUser() {
         String token = getUserToken();
         given()
                 .spec(getBaseSpec())
-                .header("authorization",token)
+                .header("authorization", token)
                 .when()
                 .delete(LOGIN_API + "user")
                 .then();

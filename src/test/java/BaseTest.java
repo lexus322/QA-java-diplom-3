@@ -1,10 +1,9 @@
-import org.junit.Before;
-
 import com.codeborne.selenide.Configuration;
+import org.junit.Before;
 
 public class BaseTest {
     @Before
-    public void configureDriver(){
+    public void configureDriver() {
         Configuration.browserSize = "1920x1080";
     }
 }

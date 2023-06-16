@@ -9,19 +9,22 @@ import org.openqa.selenium.support.How;
 import static com.codeborne.selenide.Selenide.page;
 
 public class ForgotPasswordPage {
-    private final String URL = "https://stellarburgers.nomoreparties.site/forgot-password";
-    @FindBy(how = How.XPATH,using = "//a[text()='Войти']")
+    public static final String URL = "https://stellarburgers.nomoreparties.site/forgot-password";
+    @FindBy(how = How.XPATH, using = "//a[text()='Войти']")
     private SelenideElement logInLink;
+
     @Step("Клик по кнопке 'Войти' на станице сброса пароля")
-    public LogInPage clickLogInLink(){
+    public LogInPage clickLogInLink() {
         logInLink.shouldBe(Condition.visible).click();
         return page(LogInPage.class);
     }
+
     @Step("Ожидание загрузки страницы Сброса пароля")
     public ForgotPasswordPage forgotPasswordPageLoaded() {
         logInLink.shouldBe(Condition.visible);
         return this;
     }
+
     @Step("Ожидание закрытия страницы Сброса пароля")
     public ForgotPasswordPage forgotPasswordPageDisappear() {
         logInLink.shouldBe(Condition.disappear);
