@@ -3,6 +3,7 @@ package ru.tiurin.pageobject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -21,12 +22,16 @@ public class LogInPage {
 
     @Step("Заполение поля 'Email' значением {email}")
     public LogInPage fillEmailInput(String email) {
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys(Keys.SHIFT, Keys.HOME,Keys.DELETE);
         emailInput.sendKeys(email);
         return this;
     }
 
     @Step("Заполение поля 'Пароль' значением {password}")
     public LogInPage fillPasswordInput(String password) {
+        passwordInput.sendKeys(Keys.SHIFT, Keys.HOME,Keys.DELETE);
         passwordInput.sendKeys(password);
         return this;
     }

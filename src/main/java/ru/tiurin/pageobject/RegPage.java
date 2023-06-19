@@ -3,8 +3,11 @@ package ru.tiurin.pageobject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegPage {
     public static final String URL = "https://stellarburgers.nomoreparties.site/register";
@@ -27,18 +30,23 @@ public class RegPage {
 
     @Step("Заполнение поля 'Имя' значением {name}")
     public RegPage fillNameInput(String name) {
+        nameInput.sendKeys(Keys.SHIFT, Keys.HOME,Keys.DELETE);
         nameInput.sendKeys(name);
         return this;
     }
 
     @Step("Заполение поля 'Email' значением {email}")
     public RegPage fillEmailInput(String email) {
+        emailInput.sendKeys(Keys.SHIFT, Keys.HOME,Keys.DELETE);
         emailInput.sendKeys(email);
         return this;
     }
 
     @Step("Заполение поля 'Пароль' значением {password}")
     public RegPage fillPasswordInput(String password) {
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(Keys.SHIFT, Keys.HOME,Keys.DELETE);
         passwordInput.sendKeys(password);
         return this;
     }

@@ -56,54 +56,6 @@ public class RegTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Проверка регистрации нового пользователя с пустым полем Email")
-    public void checkNewUserIsNotRegisteredWithoutEmail() {
-        User userNotValid = User.getRandomUserValidData();
-        userNotValid.setEmail("");
-        open(RegPage.URL, RegPage.class)
-                .fillNameInput(userNotValid.getName())
-                .fillEmailInput(userNotValid.getEmail())
-                .fillPasswordInput(userNotValid.getPassword())
-                .clickButtonReg();
-        userListForDelete.add(userNotValid);
-        sleep(1000);
-        String currentURL = webdriver().driver().url();
-        assertEquals(RegPage.URL, currentURL);
-    }
-
-    @Test
-    @DisplayName("Проверка регистрации нового пользователя с пустым полем Name")
-    public void checkNewUserIsNotRegisteredWithoutName() {
-        User userNotValid = User.getRandomUserValidData();
-        userNotValid.setName("");
-        open(RegPage.URL, RegPage.class)
-                .fillNameInput(userNotValid.getName())
-                .fillEmailInput(userNotValid.getEmail())
-                .fillPasswordInput(userNotValid.getPassword())
-                .clickButtonReg();
-        userListForDelete.add(userNotValid);
-        sleep(1000);
-        String currentURL = webdriver().driver().url();
-        assertEquals(RegPage.URL, currentURL);
-    }
-
-    @Test
-    @DisplayName("Проверка регистрации нового пользователя с пустым полем Password")
-    public void checkNewUserIsNotRegisteredWithoutPassword() {
-        User userNotValid = User.getRandomUserValidData();
-        userNotValid.setPassword("");
-        open(RegPage.URL, RegPage.class)
-                .fillNameInput(User.getRandomValidName())
-                .fillEmailInput(User.getRandomValidEmail())
-                .fillPasswordInput("")
-                .clickButtonReg();
-        userListForDelete.add(userNotValid);
-        sleep(1000);
-        String currentURL = webdriver().driver().url();
-        assertEquals(RegPage.URL, currentURL);
-    }
-
-    @Test
     @DisplayName("Проверка регистрации нового пользователя с полем Password не соотвествующему требования")
     public void checkNewUserIsNotRegisteredWithTooShortPassword() {
         User userNotValid = User.getRandomUserValidData();

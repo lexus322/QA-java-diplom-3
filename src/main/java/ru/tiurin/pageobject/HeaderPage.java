@@ -34,7 +34,7 @@ public class HeaderPage {
         return this;
     }
 
-    @Step("Клик по 'Ленте заказов' в шапке")
+    @Step("Клик по 'Личный кабинет' в шапке")
     public HeaderPage clickAccountLinkHeaderButton() {
         accountLink.shouldBe(Condition.visible).click();
         return this;
